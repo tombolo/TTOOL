@@ -2,30 +2,62 @@ import LZString from 'lz-string';
 import localForage from 'localforage';
 import DBotStore from '../scratch/dbot-store';
 import { save_types } from '../constants/save-type';
-import AutoRobot from './bots/BRAMEVENODDPRINTER.xml';
-import OverUnderBot from './bots/Bramover2withrecoveryofover3.xml';
-import Derivminer from './bots/dollar_flipper.xml';
+import AutoRobot from './bots/$hmspeedbot$.xml';
+import OverUnderBot from './bots/ALEXSPEEDBOT_EXPRO.xml';
+import Derivminer from './bots/D-Xpert_Speed_bot_entry_point.xml';
+import Mrduke from './bots/Mr_duke_ov2_bot.xml';
+import Recovery from './bots/OVER_1_WITH_OVER_3_RECOVERY.xml';
+import Sv6 from './bots/Sv6.xml';
+import Recovery8 from './bots/UNDER_8_WITH_UNDER_6_RECOVERY.xml';
 
 // Static bot configurations
 const STATIC_BOTS = {
     auto_robot: {
         id: 'auto_robot',
-        name: '1-tick Digit Over 2 (Split Martingale)',
+        name: '$hmspeedbot$',
         xml: AutoRobot,
         timestamp: Date.now(),
         save_type: save_types.LOCAL,
     },
     over_under: {
         id: 'over_under_bot_by_GLE',
-        name: 'M27 Auto Switch bot 2024',
+        name: 'ALEXSPEEDBOT EXPRO',
         xml: OverUnderBot,
         timestamp: Date.now(),
         save_type: save_types.LOCAL,
     },
     deriv_miner_pro: {
         id: 'deriv_miner_pro',
-        name: 'MIKE the G ❤️💚🧡',
+        name: 'D-Xpert Speed bot entry point',
         xml: Derivminer,
+        timestamp: Date.now(),
+        save_type: save_types.LOCAL,
+    },
+    mrduke: {
+        id: 'auto_robot',
+        name: 'Mr duke ov2 bot',
+        xml: Mrduke,
+        timestamp: Date.now(),
+        save_type: save_types.LOCAL,
+    },
+    recovery: {
+        id: 'over_under_bot_by_GLE',
+        name: 'OVER 1 WITH OVER 3 RECOVERYM27 Auto Switch bot 2024',
+        xml: Recovery,
+        timestamp: Date.now(),
+        save_type: save_types.LOCAL,
+    },
+    sv6: {
+        id: 'deriv_miner_pro',
+        name: 'SV6',
+        xml: Sv6,
+        timestamp: Date.now(),
+        save_type: save_types.LOCAL,
+    },
+    deriv_miner_pro: {
+        id: 'deriv_miner_pro',
+        name: 'UNDER 8 WITH UNDER 6 RECOVERY',
+        xml: Recovery8,
         timestamp: Date.now(),
         save_type: save_types.LOCAL,
     },

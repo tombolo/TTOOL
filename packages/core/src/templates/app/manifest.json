@@ -1,7 +1,7 @@
 {
     "name": "Deriv",
     "short_name": "Deriv",
-    "description": "Deriv gives everyone an easy way to participate in the financial markets.",
+    "description": "In partnership with Deriv to support informed trading decisions , www.bramfx.site(BRAM FX) offers you a platform to participate in the financial markets and empowers your trading journey with tools, education and trading bots.",
     "id": "/",
     "start_url": "{start_url_base}",
     "display": "standalone",
