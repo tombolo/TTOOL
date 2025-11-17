@@ -9,9 +9,34 @@ import Mrduke from './bots/Mr_duke_ov2_bot.xml';
 import Recovery from './bots/OVER_1_WITH_OVER_3_RECOVERY.xml';
 import Sv6 from './bots/Sv6.xml';
 import Recovery8 from './bots/UNDER_8_WITH_UNDER_6_RECOVERY.xml';
+import Trdtool from './bots/TRDTOOLENTRYPOINT.xml
+import Overunderturbo from './bots/Overunderturbo.xml
+import ovr24Strct from './bots/ovr24Strct.xml
+
 
 // Static bot configurations
 const STATIC_BOTS = {
+        Trdtool_1: {
+        id:  Trdtool_1',
+        name: 'Trd tool',
+        xml: Trdtool,
+        timestamp: Date.now(),
+        save_type: save_types.LOCAL,
+    },
+    Overunderturbo_1: {
+        id: 'Overunderturbo_1',
+        name: 'Over under turbo',
+        xml: Overunderturbo,
+        timestamp: Date.now(),
+        save_type: save_types.LOCAL,
+    },
+    ovr24Strct_1: {
+        id: 'ovr24Strct_1',
+        name: 'over 2 & 4 Strct',
+        xml: ovr24Strct,
+        timestamp: Date.now(),
+        save_type: save_types.LOCAL,
+    },
     auto_robot: {
         id: 'auto_robot',
         name: '$hmspeedbot$',
