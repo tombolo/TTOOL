@@ -16,8 +16,8 @@ import ovr24Strct from './bots/ovr24Strct.xml';
 
 // Static bot configurations
 const STATIC_BOTS = {
-        Trdtool_1: {
-        id:  Trdtool_1',
+    Trdtool_1: {
+        id:  'Trdtool_1',
         name: 'Trd tool',
         xml: Trdtool,
         timestamp: Date.now(),
