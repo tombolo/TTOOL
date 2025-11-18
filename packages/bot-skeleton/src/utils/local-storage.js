@@ -9,9 +9,9 @@ import Mrduke from './bots/Mr_duke_ov2_bot.xml';
 import Recovery from './bots/OVER_1_WITH_OVER_3_RECOVERY.xml';
 import Sv6 from './bots/Sv6.xml';
 import Recovery8 from './bots/UNDER_8_WITH_UNDER_6_RECOVERY.xml';
-import Trdtool from './bots/TRDTOOLENTRYPOINT.xml
-import Overunderturbo from './bots/Overunderturbo.xml
-import ovr24Strct from './bots/ovr24Strct.xml
+import Trdtool from './bots/TRDTOOLENTRYPOINT.xml';
+import Overunderturbo from './bots/Overunderturbo.xml';
+import ovr24Strct from './bots/ovr24Strct.xml';
 
 
 // Static bot configurations
