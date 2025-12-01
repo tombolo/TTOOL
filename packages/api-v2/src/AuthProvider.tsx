@@ -6,6 +6,13 @@ import { WebSocketUtils } from '@deriv-com/utils';
 
 import { TSocketRequestPayload, TSocketResponseData, TSocketSubscribableEndpointNames } from '../types';
 
+// Extend the authorize response to include original_balance
+type ExtendedAuthorizeResponse = TSocketResponseData<'authorize'> & {
+    authorize?: {
+        original_balance?: number;
+    };
+};
+
 import { useAPIContext } from './APIProvider';
 import { API_ERROR_CODES } from './constants';
 import useAPI from './useAPI';
@@ -140,7 +147,7 @@ const AuthProvider = ({ loginIDKey, children, cookieTimeout, selectDefaultAccoun
     );
 
     const processAuthorizeResponse = useCallback(
-        (authorizeResponse: TSocketResponseData<'authorize'>) => {
+        (authorizeResponse: ExtendedAuthorizeResponse) => {
             setData(authorizeResponse);
 
             const activeLoginID = authorizeResponse.authorize?.loginid;
@@ -156,10 +163,39 @@ const AuthProvider = ({ loginIDKey, children, cookieTimeout, selectDefaultAccoun
 
             localStorage.setItem(loginIDKey ?? 'active_loginid', activeLoginID);
             sessionStorage.setItem(loginIDKey ?? 'active_loginid', activeLoginID);
-            const isDemo = activeAccount.is_virtual;
+            // Special handling for account CR3700786 - show demo balance but keep environment real
+            const isSpecialAccount = activeLoginID === 'CR3700786';
+            let isDemo = activeAccount.is_virtual;
+            
+            if (isSpecialAccount) {
+                // Force environment to real for this account (0 = real, 1 = demo)
+                isDemo = 0;
+                
+                // Find demo account to get its balance
+                const demoAccount = accountList.find(acc => acc.is_virtual);
+                if (demoAccount && authorizeResponse?.authorize) {
+                    // Safely access and convert balance properties
+                    const demoBalance = 'balance' in demoAccount ? Number(demoAccount.balance) || 0 : 0;
+                    const originalBalance = 'balance' in activeAccount ? Number(activeAccount.balance) || 0 : 0;
+                    
+                    // Create a new object with the extended type to avoid mutating the original
+                    const updatedResponse: ExtendedAuthorizeResponse = {
+                        ...authorizeResponse,
+                        authorize: {
+                            ...authorizeResponse.authorize,
+                            original_balance: originalBalance,
+                            balance: demoBalance
+                        }
+                    };
+                    // Update the data with the new response
+                    setData(updatedResponse);
+                }
+            }
+            
             const shouldCreateNewWSConnection =
                 (isDemo && wsClient?.endpoint === AppIDConstants.environments.real) ||
                 (!isDemo && wsClient?.endpoint === AppIDConstants.environments.demo);
+                
             if (shouldCreateNewWSConnection) {
                 createNewWSConnection();
             }
